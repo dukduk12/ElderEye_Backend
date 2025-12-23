@@ -11,4 +11,3 @@ server1/alembic.ini
 server1/alembic/versions
 docker-compose.yml
 .env.dev
-docker-compose.dev.yml

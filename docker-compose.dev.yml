@@ -1,0 +1,69 @@
+services:
+  db-eldereye:
+    container_name: mysql_eldereye
+    ports:
+      - "3310:3306"
+    env_file:
+      - .env.dev
+    volumes:
+      - db_eldereye_data:/var/lib/mysql
+
+  db-streamlogger:
+    container_name: mysql_stream
+    ports:
+      - "3311:3306"
+    env_file:
+      - .env.dev
+    volumes:
+      - db_streamlogger_data:/var/lib/mysql
+      - ./init.sql:/docker-entrypoint-initdb.d/init.sql
+
+  app1:
+    container_name: fastapi_app
+    ports:
+      - "9123:9123"
+    env_file:
+      - .env.dev
+    volumes:
+      - ./server1:/app
+      - ./alerts:/app/alerts
+    command: ["/bin/bash", "/app/docker-entrypoint.sh"]
+
+  app2:
+    container_name: node_app
+    ports:
+      - "5000:5000"
+      - "40000-40100:40000-40100/udp"
+    env_file:
+      - .env.dev
+    volumes:
+      - ./server2:/app
+      - /app/node_modules
+    command: ["npm", "start"]
+
+  app3:
+    container_name: event_detector
+    ports:
+      - "6000:6000"
+      - "8000:8000"
+    volumes:
+      - ./server3:/app
+      - ./alerts:/app/alerts
+      - ./alerts_gradcam:/app/alerts_gradcam
+
+  prometheus:
+    ports:
+      - "9090:9090"
+    volumes:
+      - ./monitoring/prometheus.yml:/etc/prometheus/prometheus.yml
+
+  grafana:
+    ports:
+      - "3000:3000"
+    volumes:
+      - grafana_data:/var/lib/grafana
+
+volumes:
+  db_eldereye_data:
+  db_streamlogger_data:
+  grafana_data:
