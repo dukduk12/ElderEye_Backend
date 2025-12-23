@@ -52,7 +52,7 @@ This architecture diagram illustrates the interaction among the mobile frontend,
 
 | App Home Screen       | Live Streaming Screen  | Alert Tab Screen      | Notification Detected Screen |
 |----------------------|-----------------------|----------------------|-----------------------------|
-| <img src="./doc/images/app-home.png" alt="ElderEye App Home Screen" width="250"/> | <img src="./doc/images/app-stream.png" alt="ElderEye Live Streaming Screen" width="250"/> | <img src="./doc/images/app-alert.png" alt="ElderEye Alert Tab Screen" width="250"/> | <img src="./doc/images/app-notification.png" alt="ElderEye Notification Detected Screen" width="250"/> |
+| <img src="./doc/images/app-home.jpg" alt="ElderEye App Home Screen" width="250"/> | <img src="./doc/images/app-stream.png" alt="ElderEye Live Streaming Screen" width="250"/> | <img src="./doc/images/app-alert.png" alt="ElderEye Alert Tab Screen" width="250"/> | <img src="./doc/images/app-notification.png" alt="ElderEye Notification Detected Screen" width="250"/> |
 | Home Dashboard       | Real-Time Video Streaming | Alert Tab View       | Detected Notification View   |
 
 ---
